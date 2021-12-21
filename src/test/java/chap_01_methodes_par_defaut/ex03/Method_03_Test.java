@@ -7,8 +7,6 @@ import org.junit.Test;
 import chap_01_methodes_par_defaut.data.Data;
 import chap_01_methodes_par_defaut.data.Person;
 
-import static chap_01_methodes_par_defaut.ex03.Method_03_Test.IDao.getDefaultInstance;
-
 /**
  * Exercice 03 - Méthode statique
  */
@@ -39,7 +37,7 @@ public class Method_03_Test {
     @Test
     public void test_getDefaultInstance() throws Exception {
         // TODO invoquer la méthode getDefaultInstance() pour que le test soit passant
-        IDao result = getDefaultInstance();
+        IDao result = IDao.getDefaultInstance();
 
         assert result.findAll().size() == 20;
     }
