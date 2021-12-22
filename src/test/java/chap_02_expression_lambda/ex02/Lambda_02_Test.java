@@ -5,6 +5,7 @@ import chap_02_expression_lambda.data.Data;
 import chap_02_expression_lambda.data.Person;
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -19,7 +20,11 @@ public class Lambda_02_Test {
 
     private List<Account> map(List<Person> personList, PersonToAccountMapper mapper) {
         // TODO implémenter la méthode pour transformer une liste de personnes en liste de comptes
-        return null;
+        List<Account> comptes = new ArrayList<>();
+        for (Person p : personList) {
+            Account monCompte = mapper.map(p);
+        }
+        return comptes;
     }
 
 
@@ -30,7 +35,14 @@ public class Lambda_02_Test {
 
         // TODO transformer la liste de personnes en liste de comptes
         // TODO tous les objets comptes ont un solde à 100 par défaut
-        List<Account> result = map(personList, null);
+        PersonToAccountMapper m = p -> {
+            Account monCompte = new Account();
+            monCompte.setOwner(p);
+            monCompte.setBalance(100);
+            return monCompte;
+        };
+
+        List<Account> result = map(personList, m);
 
         assert result.size() == personList.size();
         for (Account account : result) {
